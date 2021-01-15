@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1062220220582",
+    "firebase_url": "https://randomteam-c57df.firebaseio.com",
+    "project_id": "randomteam-c57df",
+    "storage_bucket": "randomteam-c57df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062220220582:android:1f0f0189831d40c9ad4c67",
+        "android_client_info": {
+          "package_name": "ndt.randomTeam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062220220582-84jrod9iu19pcgniar7585p86doicrmc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq2dziA12Iv6HsCDeHmOj-UR4yxWSWUqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062220220582-84jrod9iu19pcgniar7585p86doicrmc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1062220220582-97vq3qvm25gesfr0gvb6l3k0ojsrbo7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "NDT.RandomTeam"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

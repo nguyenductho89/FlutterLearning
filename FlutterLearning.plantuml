@@ -1,0 +1,116 @@
+@startuml
+set namespaceSeparator ::
+
+class "BullsEye::InheritedWidget::HomeScreen.dart::TodoApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "BullsEye::InheritedWidget::HomeScreen.dart::TodoApp"
+
+class "BullsEye::InheritedWidget::HomeScreen.dart::HomeScreen" {
+  +HomeScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "BullsEye::InheritedWidget::HomeScreen.dart::HomeScreen"
+
+class "BullsEye::InheritedWidget::HomeScreen.dart::HomeScreenState" {
+  +User user
+  -Widget _userInfo
+  -Widget _logInPrompt
+  -void _updateUser()
+  +Widget build()
+}
+
+"BullsEye::InheritedWidget::HomeScreen.dart::HomeScreenState" o-- "BullsEye::InheritedWidget::StateContainer.dart::User"
+"BullsEye::InheritedWidget::HomeScreen.dart::HomeScreenState" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::State<T>" <|-- "BullsEye::InheritedWidget::HomeScreen.dart::HomeScreenState"
+
+class "BullsEye::InheritedWidget::StateContainer.dart::User" {
+  +dynamic firstName
+  +dynamic lastName
+  +dynamic email
+}
+
+class "BullsEye::InheritedWidget::StateContainer.dart::StateContainer" {
+  +Widget child
+  +User user
+  {static} +StateContainerState of()
+  +StateContainerState createState()
+}
+
+"BullsEye::InheritedWidget::StateContainer.dart::StateContainer" o-- "flutter::src::widgets::framework.dart::Widget"
+"BullsEye::InheritedWidget::StateContainer.dart::StateContainer" o-- "BullsEye::InheritedWidget::StateContainer.dart::User"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "BullsEye::InheritedWidget::StateContainer.dart::StateContainer"
+
+class "BullsEye::InheritedWidget::StateContainer.dart::StateContainerState" {
+  +User user
+  +void updateUserInfo()
+  +Widget build()
+}
+
+"BullsEye::InheritedWidget::StateContainer.dart::StateContainerState" o-- "BullsEye::InheritedWidget::StateContainer.dart::User"
+"flutter::src::widgets::framework.dart::State<T>" <|-- "BullsEye::InheritedWidget::StateContainer.dart::StateContainerState"
+
+class "BullsEye::InheritedWidget::StateContainer.dart::_InheritedStateContainer" {
+  +StateContainerState data
+  +bool updateShouldNotify()
+}
+
+"BullsEye::InheritedWidget::StateContainer.dart::_InheritedStateContainer" o-- "BullsEye::InheritedWidget::StateContainer.dart::StateContainerState"
+"flutter::src::widgets::framework.dart::InheritedWidget" <|-- "BullsEye::InheritedWidget::StateContainer.dart::_InheritedStateContainer"
+
+class "BullsEye::InheritedWidget::UpdateUserScreen.dart::UpdateUserScreen" {
+  {static} +GlobalKey<FormState> formKey
+  {static} +GlobalKey<FormFieldState> firstNameKey
+  {static} +GlobalKey<FormFieldState> lastNameKey
+  {static} +GlobalKey<FormFieldState> emailKey
+  +User user
+  +Widget build()
+}
+
+"BullsEye::InheritedWidget::UpdateUserScreen.dart::UpdateUserScreen" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"BullsEye::InheritedWidget::UpdateUserScreen.dart::UpdateUserScreen" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormFieldState>"
+"BullsEye::InheritedWidget::UpdateUserScreen.dart::UpdateUserScreen" o-- "BullsEye::InheritedWidget::StateContainer.dart::User"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "BullsEye::InheritedWidget::UpdateUserScreen.dart::UpdateUserScreen"
+
+class "BullsEye::FireCloud::fireCloudExample.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "BullsEye::FireCloud::fireCloudExample.dart::MyApp"
+
+class "BullsEye::FireCloud::fireCloudExample.dart::MyHomePage" {
+  +_MyHomePageState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "BullsEye::FireCloud::fireCloudExample.dart::MyHomePage"
+
+class "BullsEye::FireCloud::fireCloudExample.dart::_MyHomePageState" {
+  +Widget build()
+  -Widget _buildBody()
+  -Widget _buildList()
+  -Widget _buildListItem()
+}
+
+"flutter::src::widgets::framework.dart::State<T>" <|-- "BullsEye::FireCloud::fireCloudExample.dart::_MyHomePageState"
+
+class "BullsEye::FireCloud::fireCloudExample.dart::Record" {
+  +dynamic name
+  +int votes
+  +DocumentReference reference
+  +dynamic toString()
+}
+
+"BullsEye::FireCloud::fireCloudExample.dart::Record" o-- "cloud_firestore::cloud_firestore.dart::DocumentReference"
+
+class "BullsEye::main.dart::AppType" {
+  +int index
+  {static} +List<AppType> values
+  {static} +AppType fireCloud
+  {static} +AppType inheritedWidget
+}
+
+"BullsEye::main.dart::AppType" o-- "BullsEye::main.dart::AppType"
+
+
+@enduml
