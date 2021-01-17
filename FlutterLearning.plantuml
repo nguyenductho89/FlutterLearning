@@ -108,9 +108,150 @@ class "BullsEye::main.dart::AppType" {
   {static} +List<AppType> values
   {static} +AppType fireCloud
   {static} +AppType inheritedWidget
+  {static} +AppType navigator
 }
 
 "BullsEye::main.dart::AppType" o-- "BullsEye::main.dart::AppType"
 
+class "BullsEye::Navigator::BooksAppState.dart::BooksAppState" {
+  -int _selectedIndex
+  -Book _selectedBook
+  +List<Book> books
+  +int selectedIndex
+  +Book selectedBook
+  +int getSelectedBookById()
+  +void setSelectedBookById()
+}
 
+"BullsEye::Navigator::BooksAppState.dart::BooksAppState" o-- "BullsEye::Navigator::Book.dart::Book"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "BullsEye::Navigator::BooksAppState.dart::BooksAppState"
+
+class "BullsEye::Navigator::BooksListScreen.dart::BooksListScreen" {
+  +List<Book> books
+  +void Function(Book) onTapped
+  +Widget build()
+}
+
+"BullsEye::Navigator::BooksListScreen.dart::BooksListScreen" o-- "flutter::src::foundation::basic_types.dart::void Function(Book)"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "BullsEye::Navigator::BooksListScreen.dart::BooksListScreen"
+
+class "BullsEye::Navigator::BookDetailsScreen.dart::BookDetailsScreen" {
+  +Book book
+  +Widget build()
+}
+
+"BullsEye::Navigator::BookDetailsScreen.dart::BookDetailsScreen" o-- "BullsEye::Navigator::Book.dart::Book"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "BullsEye::Navigator::BookDetailsScreen.dart::BookDetailsScreen"
+
+class "BullsEye::Navigator::Book.dart::Book" {
+  +String title
+  +String author
+}
+
+class "BullsEye::Navigator::NestedRouterDemo.dart::NestedRouterDemo" {
+  +_NestedRouterDemoState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "BullsEye::Navigator::NestedRouterDemo.dart::NestedRouterDemo"
+
+class "BullsEye::Navigator::NestedRouterDemo.dart::_NestedRouterDemoState" {
+  -BookRouterDelegate _routerDelegate
+  -BookRouteInformationParser _routeInformationParser
+  +Widget build()
+}
+
+"BullsEye::Navigator::NestedRouterDemo.dart::_NestedRouterDemoState" o-- "BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate"
+"BullsEye::Navigator::NestedRouterDemo.dart::_NestedRouterDemoState" o-- "BullsEye::Navigator::BooksAppRoute.dart::BookRouteInformationParser"
+"flutter::src::widgets::framework.dart::State<T>" <|-- "BullsEye::Navigator::NestedRouterDemo.dart::_NestedRouterDemoState"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::BookRouteInformationParser" {
+  +Future parseRouteInformation()
+  +RouteInformation restoreRouteInformation()
+}
+
+"flutter::src::widgets::router.dart::RouteInformationParser<T>" <|-- "BullsEye::Navigator::BooksAppRoute.dart::BookRouteInformationParser"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate" {
+  +GlobalKey<NavigatorState> navigatorKey
+  +BooksAppState appState
+  +BookRoutePath currentConfiguration
+  +Widget build()
+  +Future setNewRoutePath()
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate" o-- "flutter::src::widgets::framework.dart::GlobalKey<NavigatorState>"
+"BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate" o-- "BullsEye::Navigator::BooksAppState.dart::BooksAppState"
+"BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate" o-- "BullsEye::Navigator::BooksAppRoute.dart::BookRoutePath"
+"flutter::src::widgets::router.dart::RouterDelegate<T>" <|-- "BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate"
+"flutter::src::widgets::router.dart::PopNavigatorRouterDelegateMixin<T>" <|-- "BullsEye::Navigator::BooksAppRoute.dart::BookRouterDelegate"
+
+abstract class "BullsEye::Navigator::BooksAppRoute.dart::BookRoutePath" {
+}
+
+class "BullsEye::Navigator::BooksAppRoute.dart::BooksListPath" {
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::BookRoutePath" <|-- "BullsEye::Navigator::BooksAppRoute.dart::BooksListPath"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::BooksSettingsPath" {
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::BookRoutePath" <|-- "BullsEye::Navigator::BooksAppRoute.dart::BooksSettingsPath"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::BooksDetailsPath" {
+  +int id
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::BookRoutePath" <|-- "BullsEye::Navigator::BooksAppRoute.dart::BooksDetailsPath"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::AppShell" {
+  +BooksAppState appState
+  +_AppShellState createState()
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::AppShell" o-- "BullsEye::Navigator::BooksAppState.dart::BooksAppState"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "BullsEye::Navigator::BooksAppRoute.dart::AppShell"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::_AppShellState" {
+  -InnerRouterDelegate _routerDelegate
+  -ChildBackButtonDispatcher _backButtonDispatcher
+  +void initState()
+  +void didUpdateWidget()
+  +void didChangeDependencies()
+  +Widget build()
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::_AppShellState" o-- "BullsEye::Navigator::BooksAppRoute.dart::InnerRouterDelegate"
+"BullsEye::Navigator::BooksAppRoute.dart::_AppShellState" o-- "flutter::src::widgets::router.dart::ChildBackButtonDispatcher"
+"flutter::src::widgets::framework.dart::State<T>" <|-- "BullsEye::Navigator::BooksAppRoute.dart::_AppShellState"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::InnerRouterDelegate" {
+  +GlobalKey<NavigatorState> navigatorKey
+  -BooksAppState _appState
+  +BooksAppState appState
+  +Widget build()
+  +Future setNewRoutePath()
+  -void _handleBookTapped()
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::InnerRouterDelegate" o-- "flutter::src::widgets::framework.dart::GlobalKey<NavigatorState>"
+"BullsEye::Navigator::BooksAppRoute.dart::InnerRouterDelegate" o-- "BullsEye::Navigator::BooksAppState.dart::BooksAppState"
+"flutter::src::widgets::router.dart::RouterDelegate<T>" <|-- "BullsEye::Navigator::BooksAppRoute.dart::InnerRouterDelegate"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "BullsEye::Navigator::BooksAppRoute.dart::InnerRouterDelegate"
+"flutter::src::widgets::router.dart::PopNavigatorRouterDelegateMixin<T>" <|-- "BullsEye::Navigator::BooksAppRoute.dart::InnerRouterDelegate"
+
+class "BullsEye::Navigator::BooksAppRoute.dart::FadeAnimationPage" {
+  +Widget child
+  +Route createRoute()
+}
+
+"BullsEye::Navigator::BooksAppRoute.dart::FadeAnimationPage" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::navigator.dart::Page<T>" <|-- "BullsEye::Navigator::BooksAppRoute.dart::FadeAnimationPage"
+
+class "BullsEye::Navigator::SettingsScreen.dart::SettingsScreen" {
+  +Widget build()
+}
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "BullsEye::Navigator::SettingsScreen.dart::SettingsScreen"
 @enduml
+
