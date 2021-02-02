@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'InheritedWidget/HomeScreen.dart';
 import 'InheritedWidget/StateContainer.dart';
 import 'Navigator/NestedRouterDemo.dart';
+import 'Provider/Cart/CartApp.dart';
 import 'UnitTest/TestingApp.dart';
 
-enum AppType { fireCloud, inheritedWidget, navigator, unitTest }
+enum AppType { fireCloud, inheritedWidget, navigator, unitTest, provider }
 
-var appType = AppType.unitTest;
+var appType = AppType.provider;
 
 void main() {
   switch (appType) {
@@ -22,6 +23,9 @@ void main() {
       return;
     case AppType.unitTest:
       runApp(TestingApp());
+      return;
+    case AppType.provider:
+      runApp(CartApp());
       return;
   }
 }

@@ -48,6 +48,7 @@ class FavoriteItemTile extends StatelessWidget {
           icon: Icon(Icons.close),
           onPressed: () {
             Provider.of<Favorites>(context, listen: false).remove(itemNo);
+            context.read()
             Scaffold.of(context).showSnackBar(
               SnackBar(
                 content: Text('Removed from favorites.'),
