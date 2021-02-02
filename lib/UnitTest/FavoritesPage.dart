@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +47,7 @@ class FavoriteItemTile extends StatelessWidget {
           icon: Icon(Icons.close),
           onPressed: () {
             Provider.of<Favorites>(context, listen: false).remove(itemNo);
-            context.read()
+            context.read();
             Scaffold.of(context).showSnackBar(
               SnackBar(
                 content: Text('Removed from favorites.'),

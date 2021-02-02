@@ -1,3 +1,5 @@
+import 'package:flutter_riverpod/all.dart';
+import 'DomainLayer/DomainLayerApp.dart';
 import 'FireCloud/fireCloudExample.dart';
 import 'package:flutter/material.dart';
 import 'InheritedWidget/HomeScreen.dart';
@@ -6,9 +8,9 @@ import 'Navigator/NestedRouterDemo.dart';
 import 'Provider/Cart/CartApp.dart';
 import 'UnitTest/TestingApp.dart';
 
-enum AppType { fireCloud, inheritedWidget, navigator, unitTest, provider }
+enum AppType { fireCloud, inheritedWidget, navigator, unitTest, provider, domainLayer }
 
-var appType = AppType.provider;
+var appType = AppType.navigator;
 
 void main() {
   switch (appType) {
@@ -26,6 +28,9 @@ void main() {
       return;
     case AppType.provider:
       runApp(CartApp());
+      return;
+    case AppType.domainLayer:
+      runApp(ProviderScope(child: DomainLayerApp()));
       return;
   }
 }
