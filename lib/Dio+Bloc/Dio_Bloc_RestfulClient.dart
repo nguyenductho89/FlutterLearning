@@ -1,8 +1,6 @@
-import 'package:BullsEye/Dio+Bloc/response.dart';
 import 'package:dio/dio.dart';
 import 'package:rxdart/rxdart.dart';
 import 'UserResponse.dart';
-import 'response.dart';
 
 class Dio_Bloc_RestfulClient {
   final String _endpoint = "https://randomuser.me/api/";

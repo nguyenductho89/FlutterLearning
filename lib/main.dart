@@ -10,7 +10,7 @@ import 'UnitTest/TestingApp.dart';
 
 enum AppType { fireCloud, inheritedWidget, navigator, unitTest, provider, domainLayer }
 
-var appType = AppType.navigator;
+var appType = AppType.domainLayer;
 
 void main() {
   switch (appType) {
